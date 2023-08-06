@@ -68,8 +68,8 @@ function showOddEven(n = 0) {
 }
 
 
-function showArea(r  = 0) {
-    const pi = 3.14
+function showArea(r = 0) {
+    const pi = 3.14 //Se o valor de pi fosse maior vocè poderia usar o a função pi.toFixed(2) para mostrar apenas 2 casas decimais após o valor.
     const raio = 10
     let areac = pi * (raio ** 2)
     console.log(`O raio é: ${raio}`)
@@ -84,4 +84,3 @@ function showArea(r  = 0) {
     }
 }
 
-showOddEven(10)
