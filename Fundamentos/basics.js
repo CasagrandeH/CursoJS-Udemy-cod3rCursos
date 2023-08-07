@@ -83,4 +83,3 @@ function showArea(r = 0) {
         console.log(`A area total é: ${areac} m²`)
     }
 }
-

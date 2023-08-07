@@ -25,4 +25,3 @@ console.log('Gustavo, Guilherme, Natalia, Nattiely'.split(/,/))// "regex" ou "re
 let up = t => t.toUpperCase()
 console.log(`Ei... ${up('qual foi')}!`)
 //Muito dahora, template strings.
-
