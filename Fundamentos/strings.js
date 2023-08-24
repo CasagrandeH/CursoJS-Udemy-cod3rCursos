@@ -3,7 +3,7 @@ let escola = 'Cora Coralina'
 console.log(escola.charAt(5))
 console.log(escola.charCodeAt(5))//Converte para o valor na tabela HTML pelo que entendi. Pode ser usado com dataset's
 
-console.log(escola.indexOf('C'))
+console.log(escola.indexOf('cora'))
 
 console.log(escola.substring(5))
 console.log(escola.substring(0, 4))
