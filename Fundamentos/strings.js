@@ -1,4 +1,4 @@
-let escola = 'Cora Coralina'
+let escola = 'Cora Coralina Co'
 
 console.log(escola.charAt(5))
 console.log(escola.charCodeAt(5))//Converte para o valor na tabela HTML pelo que entendi. Pode ser usado com dataset's
@@ -25,3 +25,6 @@ console.log('Gustavo, Guilherme, Natalia, Nattiely'.split(/,/))// "regex" ou "re
 let up = t => t.toUpperCase()
 console.log(`Ei... ${up('qual foi')}!`)
 //Muito dahora, template strings.
+
+let test = 'lalala'
+console.log(test.indexOf(' '))
