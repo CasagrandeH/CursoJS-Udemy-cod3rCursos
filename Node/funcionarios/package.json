@@ -2,9 +2,12 @@
   "name": "funcionarios",
   "version": "1.0.0",
   "description": "lmao",
-  "main": "index.js",
+  "main": "funcionarios.js",
   "scripts": {
-    "test": "testtest"
+    "start": "nodemon",
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "keywords": [
     "123",
