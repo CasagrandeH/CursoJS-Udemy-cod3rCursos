@@ -1,0 +1,18 @@
+{
+  "name": "funcionarios",
+  "version": "1.0.0",
+  "description": "lmao",
+  "main": "index.js",
+  "scripts": {
+    "test": "testtest"
+  },
+  "keywords": [
+    "123",
+    "321"
+  ],
+  "author": "Casa",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.5.0"
+  }
+}
