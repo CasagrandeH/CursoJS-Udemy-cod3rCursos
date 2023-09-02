@@ -16,15 +16,15 @@ async function executar() {
     let valor = await retorna20()
 
     await espera()
-    console.log(`Async/Await ${valor++}...`)
+    console.log(`Async/Await ${valor}...`)
     await espera()
-    console.log(`Async/Await ${valor++}...`)
+    console.log(`Async/Await ${valor + 1}...`)
     await espera()
-    console.log(`Async/Await ${valor++}...`)
+    console.log(`Async/Await ${valor + 1}...`)
     await espera()
-    console.log(`Async/Await ${valor++}...`)
+    console.log(`Async/Await ${valor + 1}...`)
     await espera()
-    console.log(`Async/Await ${valor++}...`)
+    console.log(`Async/Await ${valor + 1}...`)
 
     return valor + 3
     
