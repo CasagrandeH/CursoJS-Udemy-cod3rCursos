@@ -9,9 +9,21 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <a data-espera="5s" href="https://google.com.br">Google</a>
     </div>
     <script>
-        // ...
+        const espera = document.querySelector('[data-espera]')
+        
+        espera.addEventListener('click', navegaEm5s)
+
+        function navegaEm5s(e) {
+            e.preventDefault()
+            console.log('Saindo em 5s...')
+            setTimeout(() => {
+                const link = e.target
+
+                window.location.href = link.getAttribute('href')
+            }, 5000)
+        }
     </script>
 </body>
