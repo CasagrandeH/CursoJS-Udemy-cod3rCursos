@@ -28,9 +28,37 @@
                 <option value="pt-br">Português (Brasil)</option>
                 <option value="en-us">Inglês (Americano)</option>
             </select>
-        <button wm-submit>Pesquisar</button>
+        <button wm-form>Pesquisar</button>
     </form>
     <script>
-        // ...
+        /*const form = document.querySelector('[wm-form]')
+        form.onclick = e => {
+            e.preventDefault()
+
+            const form = e.target.parentNode
+            const formData = new FormData(form)
+            formData.append('ajax', true)
+            console.log(formData.get('q'))
+            console.log(formData.has('hl'))
+
+            for (let dado of formData) {
+                console.log(dado)
+            }
+        }*/
+
+        const form = document.forms[0]
+        form.onsubmit = e => {
+            e.preventDefault()
+
+            const form = e.target
+            const formData = new FormData(form)
+            formData.append('ajax', true)
+            console.log(formData.get('q'))
+            console.log(formData.has('hl'))
+
+            for (let dado of formData) {
+                console.log(dado)
+            }
+        }
     </script>
 </body>
