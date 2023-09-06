@@ -94,13 +94,71 @@ function Passaro(alturaJogo) {
     this.setY(alturaJogo / 2)
 }
 
-const barreiras = new Barreiras(700, 1200, 350, 400)
-const passaro = new Passaro(700)
-const areaDoJogo = document.querySelector('[flappy]')
+function estaoSobrepostos(elementoA, elementoB) {
+    const a = elementoA.getBoundingClientRect()
+    const b = elementoB.getBoundingClientRect()
 
-areaDoJogo.appendChild(passaro.elemento)
-barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
-setInterval(() => {
-    barreiras.animar()
-    passaro.animar()
-}, 20); 
+    const horizontal = a.left + a.width >= b.left &&
+        b.left + b.width >= a.left
+
+    const vertical = a.top + a.height >= b.top &&
+        b.top + b.height >= a.top
+
+    return horizontal && vertical
+}
+
+function colisao(passaro, barreiras) {
+    let colidiu = false
+
+    barreiras.pares.forEach(par => {
+        if (!colidiu) {
+            const superior = par.superior.elemento
+            const inferior = par.inferior.elemento
+
+            colidiu = estaoSobrepostos(passaro.elemento, superior)
+                || estaoSobrepostos(passaro.elemento, inferior)
+        }
+    })
+    return colidiu
+}
+
+function Progresso() {
+    this.elemento = novoElemento('span', 'progresso') 
+    this.atualizarPontos = pontos => {
+        this.elemento.innerHTML = pontos
+    }
+    this.atualizarPontos(0)
+}
+
+function FlappyBird() {
+    let pontos = 0
+
+    const areaDoJogo = document.querySelector('[flappy]')
+    const altura = areaDoJogo.clientHeight
+    const largura = areaDoJogo.clientWidth
+
+    const score = new Progresso()
+    const barreiras = new Barreiras(altura, largura, 200, 400, () => {
+        score.atualizarPontos(++pontos)
+    })
+    const passaro = new Passaro(altura)
+    
+
+    areaDoJogo.appendChild(passaro.elemento)
+    areaDoJogo.appendChild(score.elemento)
+
+    barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
+
+    this.start = () => {
+        const timer = setInterval(() => {
+        barreiras.animar()
+        passaro.animar()
+
+        if (colisao(passaro, barreiras)) {
+            clearInterval(timer)
+        }
+    }, 20)
+}
+}
+
+new FlappyBird().start()
