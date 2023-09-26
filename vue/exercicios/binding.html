@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ teste }}</p>
+        <!-- Diretamente colocar o atributo em href não funciona -->
+        <p><a href="{{link}}">Knél?</a></p>
+        <!-- É necessario usar "binding" -->
+        <p><a v-bind:href="link">Knél!</a></p>
+        <!-- Uma outra forma de binding vvv -->
+        <p><a :href="link">Qnél!</a></p>
+
+        <p> 
+            <!-- Note que v-model muda em tempo real o valor de nome
+            até mesmo alterando o conteudo da tag "span", mas se usar um binding normal como ":value", esse comportamento cessa. -->
+            <input type="text" v-model="nome"><br>
+            <input type="text" :value="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                
+                teste: "Olá, Mundo!",
+                nome: "Kai",
+                link: "http://youtube.com/cod3rcursos"
+            },
+            watch: {
+                // Funções que são chamadas quando um valor determinado é
+                // alterado.
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>

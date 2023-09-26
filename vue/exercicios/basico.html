@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>1. {{ 2+2 }}</p>
+        <p>2. {{ "teste".toUpperCase() }}</p>
+        <p>3. Produto: {{nome}}, R${{preco.toString().replace(".",",")}}, desconto de {{desconto * 100}}%</p>
+        <p>4. Data: {{horaCerta()}}</p>
+        <p>5. {{nome}} com desconto: R${{precoDesconto.toString().replace(".",",")}}</p>
+    </div>
+    <script>
+        new Vue({
+            // el é o seletor de elemento que sera manipulado pelo Vue.js.
+            // Normalmente ele seleciona um elemento da DOM pelo ID, mas
+            // é possivel também faze-lo por meio de classes.
+            el: "#app",
+            data: {
+                // Data armazena variaveis.
+                nome: "Caneta",
+                preco: 6.89,
+                desconto: 0.15
+            },
+            methods: {
+                // methods é o "Data" das funções
+                horaCerta() {
+                    return new Date().toLocaleString()
+                }
+            },
+            computed: {
+                // Basicamente, computed seria aonde o valor de uma função seria
+                // guardado, como se estivesse colocando uma função dentro de uma
+                // const.
+                precoDesconto() {
+                    return (this.preco * (1 - this.desconto)).toFixed(2)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
