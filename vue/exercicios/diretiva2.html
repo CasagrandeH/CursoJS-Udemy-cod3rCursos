@@ -8,23 +8,24 @@
 </head>
 <body class="exercicio">
     <div id="app">
-        <label for="reverse">Do contra -> </label>
-        <input name="reverse" type="text" v-model="nome">
-        <div v-reverse="nome"></div>
+        <input type="text" v-model="val">
+        <div v-real="val"></div>
     </div>
     <script>
-        Vue.directive('reverse', {
+        Vue.directive("real", {
             componentUpdated(el, bind) {
-                const invertido = bind.value.split('')
-                    .reverse().join('')
-                el.innerHTML = invertido
+                const toReal = parseInt(bind.value).toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL"
+                })
+                el.innerHTML = toReal
             }
         })
 
         new Vue({
             el: "#app",
             data: {
-                nome: ''
+                val: ''
             }
         })
     </script>
